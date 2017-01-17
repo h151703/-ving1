@@ -1,7 +1,3 @@
-/**
- * 
- */
-package no.hib.dat102;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -9,10 +5,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import no.hib.dat102.adt.*;
 
-/**
- * @author Ole Olsen
- * 
- */
+
+//Skal ha metoder for lesing og skriving til tekstfil med poster av CD-info
 public class Fil {
 
  private static String SKILLE = "#";

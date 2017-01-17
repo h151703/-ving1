@@ -85,8 +85,8 @@ public class Tekstgrensesnitt {
 		 }
 		 
 		 for(Sjanger s : Sjanger.values()){
-			 System.out.println(cda.hentAntallSjanger(s));
-			 System.out.printf("%-15s", cda.hentAntallSjanger(s));
+			 System.out.println(cda.hentAntall(s));
+			 System.out.printf("%-15s", cda.hentAntall(s));
 		 }
 
 		 System.out.println();

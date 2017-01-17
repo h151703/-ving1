@@ -23,6 +23,6 @@ public interface CDArkivADT {
 	 int hentAntall();
 	 
 	 // Henter antall CD-er for en gitt sjanger
-	 int hentAntallSjanger(Sjanger sjanger);
+	 int hentAntall(Sjanger sjanger);
 
 }

@@ -94,7 +94,7 @@ public class CDArkiv implements CDArkivADT {
 
 	
 	@Override
-	public int hentAntallSjanger(Sjanger sjanger) {
+	public int hentAntall(Sjanger sjanger) {
 		int sum = 0;
 		
 		for(int i = 0; i < antall; i++){
