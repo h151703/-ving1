@@ -9,6 +9,10 @@ public enum Sjanger {
 		nr = n;
 	}
 	
+	 public int getNr() { 
+	       return nr;
+    }
+	
 	public static Sjanger finnSjanger(int n){
 		Sjanger sjang = null;
 		
@@ -33,4 +37,5 @@ public enum Sjanger {
 		return sjang;
 		
 	}
+
 }

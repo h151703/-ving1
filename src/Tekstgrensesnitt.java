@@ -1,26 +1,33 @@
-import easyIO.*;
+import java.util.Scanner;
 
 
 public class Tekstgrensesnitt {
 
-	In tast = new In();
+	Scanner tast = new Scanner(System.in);
+	
 	
 	
 	// lese opplysningene om en CD fra tastatur
 	 public CD lesCD(){
+		 
 		 System.out.println("Strekkoden: ");
-		 int cdNummer = tast.inInt();
+		 int cdNummer = tast.nextInt();
+		 
 		 System.out.println("Artistnavn: ");
-		 String artist = tast.inLine();
+		 String artist = tast.nextLine();
+		
 		 System.out.println("Albumnavn:  ");
-		 String tittel = tast.inLine();
+		 String tittel = tast.nextLine();
+		 
 		 System.out.println("Utgivelsesår: ");
-		 int utgivelsesaar = tast.inInt();
+		 int utgivelsesaar = tast.nextInt();
+		 
 		 System.out.println("Sjanger: ");
-		 String sjanger1 = tast.inLine();
-		 Sjanger sjanger = Sjanger.valueOf(sjanger1);
+		 System.out.println("ROCK, POP, OPERA, CLASSIC");
+		 Sjanger sjanger = Sjanger.valueOf(tast.next().toUpperCase());
+		 
 		 System.out.println("Plateselskap: ");
-		 String plateselskap = tast.inLine();
+		 String plateselskap = tast.nextLine();
 		 
 		 //Oppdretter nytt CD-objekt
 		 CD nyCD = new CD(cdNummer, tittel, artist, utgivelsesaar, sjanger, plateselskap);
@@ -80,16 +87,15 @@ public class Tekstgrensesnitt {
 		 System.out.println("Antall CD-er: " + sum);
 		 
 		 for(Sjanger s : Sjanger.values()){
-			 System.out.println(s);
 			 System.out.printf("%-15s", s);
 		 }
 		 
+		 System.out.println();
+		 
 		 for(Sjanger s : Sjanger.values()){
-			 System.out.println(cda.hentAntall(s));
 			 System.out.printf("%-15s", cda.hentAntall(s));
 		 }
 
-		 System.out.println();
 		 
 		 
 			

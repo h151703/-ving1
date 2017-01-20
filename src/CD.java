@@ -18,19 +18,15 @@ public class CD {
 		plateselskap = "";
 	}
 	
-	@Override
-	public String toString(){
-		String s = "";
-		
-		s = s.concat(cdNummer + Fil.K);
-		s = s.concat(tittel + Fil.K);
-		s = s.concat(artist + Fil.K);
-		s = s.concat(lanseringsaar + Fil.K);
-		s = s.concat(sjanger + Fil.K);
-		s = s.concat(plateselskap + Fil.K);
-		
-		return s;
+	public CD(int cdNummer, String artist, String tittel, int lanseringsaar, Sjanger sjanger, String plateselskap){
+		this.cdNummer=cdNummer;
+		this.artist=artist;
+		this.tittel=tittel;
+		this.lanseringsaar=lanseringsaar;
+		this.sjanger=sjanger;
+		this.plateselskap=plateselskap;
 	}
+
 	
 	public int getCdNummer() {
 		return cdNummer;
@@ -76,14 +72,6 @@ public class CD {
 		this.sjanger = sjanger;
 	}
 
-	public CD(int cdNummer, String artist, String tittel, int lanseringsaar, Sjanger sjanger, String plateselskap){
-		this.cdNummer=cdNummer;
-		this.artist=artist;
-		this.tittel=tittel;
-		this.lanseringsaar=lanseringsaar;
-		this.sjanger=sjanger;
-		this.plateselskap=plateselskap;
-	}
 	
 	
 	 public Sjanger getSjanger() {
