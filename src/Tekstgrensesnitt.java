@@ -112,6 +112,7 @@ public class Tekstgrensesnitt {
 		 
 			
 	 }
+	 
 	//… Ev. andre metoder
 
 }
