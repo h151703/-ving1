@@ -4,35 +4,41 @@ import java.util.Scanner;
 public class Tekstgrensesnitt {
 
 	Scanner tast = new Scanner(System.in);
-	
+
 	
 	
 	// lese opplysningene om en CD fra tastatur
 	 public CD lesCD(){
 		 
+		 System.out.println("---------------------------------------------------");
+		 
 		 System.out.println("Strekkoden: ");
 		 int cdNummer = tast.nextInt();
 		 
+		 System.out.println("Tittel:  ");
+		 String tittel = tast.next();
+		 
 		 System.out.println("Artistnavn: ");
-		 String artist = tast.nextLine();
-		
-		 System.out.println("Albumnavn:  ");
-		 String tittel = tast.nextLine();
+		 String artist = tast.next();
+		 
 		 
 		 System.out.println("Utgivelsesår: ");
 		 int utgivelsesaar = tast.nextInt();
 		 
-		 System.out.println("Sjanger: ");
-		 System.out.println("ROCK, POP, OPERA, CLASSIC");
+		 System.out.println("Sjanger: ROCK, POP, OPERA, CLASSIC");
 		 Sjanger sjanger = Sjanger.valueOf(tast.next().toUpperCase());
-		 
+		
 		 System.out.println("Plateselskap: ");
-		 String plateselskap = tast.nextLine();
-		 
+		 String plateselskap = tast.next();
+		  System.out.println("------------------------------------------------------");
+		  
+		  
 		 //Oppdretter nytt CD-objekt
 		 CD nyCD = new CD(cdNummer, tittel, artist, utgivelsesaar, sjanger, plateselskap);
 		 
 		 return nyCD;
+		 
+		
 		 
 	 }
 	 
@@ -41,10 +47,10 @@ public class Tekstgrensesnitt {
 	 public void visCD(CD cd){
 		 
 		 System.out.println("--------------------------------------");
-		 System.out.println("CD-nummer: " + cd.getCdNummer()  );
+		 System.out.println("CD-nummer: " + cd.getCdNummer());
 		 System.out.println("Tittel: " + cd.getTittel());
 		 System.out.println("Artist: " + cd.getArtist());
-		 System.out.println("Utgivelsesaar: " + cd.getCdNummer());
+		 System.out.println("Utgivelsesaar: " + cd.getLanseringsaar());
 		 System.out.println("Sjanger: " + cd.getSjanger());
 		 System.out.println("Plateselskap: " + cd.getPlateselskap());
 		 System.out.println("--------------------------------------");
@@ -56,25 +62,31 @@ public class Tekstgrensesnitt {
 		 
 		 CD[] cdSamsvarer = cda.sokTittel(delstreng);
 		 
-		 System.out.println("CD-er med " + delstreng + "i tittelen: ");
-		 	for(int i = 0; i < cdSamsvarer.length; i++){
-		 		System.out.println(cdSamsvarer[i].getTittel());
+		 System.out.println("CD-er med " + delstreng + " i tittelen: ");
+		 	for(CD cd : cdSamsvarer){
+		 		visCD(cd);
 				}
+		 	
+		 	if(cdSamsvarer.length == 0){
+				System.out.println("Det finnes ingen CD med denne tittelen.");
+			}
+		 	
 			}
 		 
-	 
 	// Skriver ut alle CD-er av en artist / en gruppe
-	 public void skrivUtCdArtist(CDArkivADT cda) {
+	 public void skrivUtCdArtist(CDArkivADT cda, String delstreng) {
 		 
-		
-		 String artist = "";
 		 
-		 CD[] cdSamsvarer = cda.sokArtist(artist);
+		 CD[] cdSamsvarer = cda.sokArtist(delstreng);
 		 
-		 System.out.println("CD-er av" + artist + ":" );
-		 for(int i = 0; i < cdSamsvarer.length; i++){
-			 System.out.println(cdSamsvarer[i].getArtist());
+		 System.out.println("CD-er av " + delstreng + ":" );
+		 for(CD cd : cdSamsvarer){
+			 visCD(cd);
 		 }
+		 
+		 if(cdSamsvarer.length == 0){
+				System.out.println("Det finne ingen CD med denne artisten.");
+			}
 		 
 	 }
 	 
@@ -85,7 +97,7 @@ public class Tekstgrensesnitt {
 		 int sum = cda.hentAntall();
 		 
 		 System.out.println("Antall CD-er: " + sum);
-		 
+
 		 for(Sjanger s : Sjanger.values()){
 			 System.out.printf("%-15s", s);
 		 }

@@ -2,8 +2,8 @@
 public class CD {
 	
 	private int cdNummer;
-	private String artist;
 	private String tittel;
+	private String artist;
 	private int lanseringsaar;
 	private Sjanger sjanger;
 	private String plateselskap;
@@ -11,17 +11,17 @@ public class CD {
 	
 	public CD(){
 		cdNummer = 0;
-		artist = "";
 		tittel = "";
+		artist = "";
 		lanseringsaar = 0;
 		sjanger = null;
 		plateselskap = "";
 	}
 	
-	public CD(int cdNummer, String artist, String tittel, int lanseringsaar, Sjanger sjanger, String plateselskap){
+	public CD(int cdNummer,  String tittel, String artist, int lanseringsaar, Sjanger sjanger, String plateselskap){
 		this.cdNummer=cdNummer;
-		this.artist=artist;
 		this.tittel=tittel;
+		this.artist=artist;
 		this.lanseringsaar=lanseringsaar;
 		this.sjanger=sjanger;
 		this.plateselskap=plateselskap;

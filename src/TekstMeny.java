@@ -5,7 +5,6 @@ public class TekstMeny{
 	Tekstgrensesnitt tekstgrensesnitt;
 	private Scanner tast;
 	private int valg;
-	private CD nyCD;
 	private String delstreng;
 
 	public TekstMeny(CDArkivADT cda){
@@ -62,7 +61,12 @@ public class TekstMeny{
 				break;
 			case 2: 
 				// Legg til CD
-				cda.leggTilCd(tekstgrensesnitt.lesCD());
+				CD nyCD = tekstgrensesnitt.lesCD();
+				cda.leggTilCd(nyCD);
+				
+				tekstgrensesnitt.visCD(nyCD);
+				
+				
 				break;
 			case 3: 
 				//Slett CD
@@ -71,20 +75,37 @@ public class TekstMeny{
 				cda.slettCd(valg);
 				break;
 			case 4:
+				
 				//Søk etter CD med tittel
 				System.out.print("Søk etter tittel: ");
-				delstreng = tast.nextLine();
-				System.out.print(cda.sokTittel(delstreng));
+				String delstreng = tast.next();
+				
+				//Lager ny tabell med CD-er med delstrengen i tittelen
+				CD[] cdArkivTittel = cda.sokTittel(delstreng);
+				
+				//Går gjennom, printer ut CDene.
+				
+					tekstgrensesnitt.skrivUtCdDelstrengITittel(cda, delstreng);
+	
+				
+
 				break;
 			case 5:
 				//Søk etter CD med artist
 				System.out.print("Søk etter artist: ");
-				delstreng = tast.nextLine();
-				System.out.print(cda.sokArtist(delstreng));
+				delstreng = tast.next();
+			
+				tekstgrensesnitt.skrivUtCdArtist(cda, delstreng);
+				
+			
+			
+				
 				break;
 			case 6:
 				//Hent antall CD-er
-				System.out.print("Hvor mange CD-er det er i arkivet: " + cda.hentAntall());
+				System.out.println("Hvor mange CD-er det er i arkivet: " + cda.hentAntall());
+				 System.out.println("Lengde på tabell: " + cda.hentCdTabell().length);
+				 
 				break;
 				
 			case 7:
@@ -100,7 +121,16 @@ public class TekstMeny{
 	
 	public void oppretteNyttArkiv() {
 		
-		undermeny();
+//			switch(valg){
+//			case 1: 
+//				System.out.println("Navn på nytt arkiv: ");
+//				delstreng = tast.next();
+//				String navnArkiv = delstreng;
+//				
+//			}
+//		System.out.println(delstreng);
+			undermeny();
+		
 	}
 	
 	public void eksisterendeArkiv() {

@@ -8,26 +8,35 @@ public class CDArkiv implements CDArkivADT {
 	 
 	 
 	 public CDArkiv(int antall){
-		 this.antall=antall;
+		 this.antall = 0;
 		 cdTabell = new CD[antall];
 	 }
 
 	 
 	@Override
 	public CD[] hentCdTabell() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Tekstgrensesnitt tekst = new Tekstgrensesnitt();
+		CD[] tabell = new CD[antall];
+		
+		for(int i = 0; i < cdTabell.length; i++){
+			if(cdTabell[i] != null){
+				tekst.visCD(cdTabell[i]);
+			}
+		}
+		return tabell;
 	}
 
 	
 	@Override
 	public void leggTilCd(CD nyCd) {
-		
-		for(int i = 0; i < cdTabell.length; i++){
-			if(cdTabell[i] == null){
-				cdTabell[i] = nyCd;
-			}
-		}
+			
+			if(antall < cdTabell.length){
+				cdTabell[antall] = nyCd;
+				antall++;
+			
+		}	System.out.println("antall " + antall);
+				System.out.println(cdTabell.length);
 	}
 
 	@Override
@@ -43,24 +52,30 @@ public class CDArkiv implements CDArkivADT {
 
 	@Override
 	public CD[] sokTittel(String delstreng) {
-
+		
 		//Lager ny array
 		CD[] tittelSamsvar = new CD[antall];
 		int antallSamsvar = 0;
 		
 		for(int i = 0; i < antall; i++){
-			if(cdTabell[i].getTittel().contains(delstreng)){
+			if(cdTabell[i].getTittel().indexOf(delstreng) >= 0){
 				tittelSamsvar[antallSamsvar] = cdTabell[i];
 				antallSamsvar++;
+				
 			}
 		}
 		
-		CD[] nyTab = new CD[antallSamsvar];
+		return tittelSamsvar;
 		
-		for(int i = 0; i < nyTab.length; i++){
-			nyTab[i]= tittelSamsvar[i];
-		}
-	return nyTab;
+		//får vekk null-objekter
+//		CD[] nyTab = new CD[antallSamsvar];
+//		
+//		for(int i = 0; i < nyTab.length; i++){
+//			nyTab[i] = tittelSamsvar[i];
+//		}
+//		
+//	return tittelSamsvar;
+//		
 	}
 
 	
@@ -69,27 +84,31 @@ public class CDArkiv implements CDArkivADT {
 		
 		CD[] artistSamsvar = new CD[antall];
 		int antallSamsvar = 0;
-		
-		
-		
+
 		for(int i=0; i<antall; i++){
-			if(cdTabell[i].getArtist().contains(delstreng)){
+			if(cdTabell[i].getArtist().indexOf(delstreng) >= 0){
 				artistSamsvar[antallSamsvar] = cdTabell[i];
 				antallSamsvar++;
 			}
 		}
 		
-		CD[] nyTab = new CD[antallSamsvar];
-		for(int i = 0; i < artistSamsvar.length; i++){
-			nyTab[i] = artistSamsvar[i];
-		}
-		return nyTab;
+		return artistSamsvar;
+		
 	}
+	
 
 	
 	@Override
 	public int hentAntall() {
-		return antall;
+		
+		int sum = 0;
+		
+		for(int i = 0; i < cdTabell.length; i++){
+			if(cdTabell[i] != null){
+				sum++;
+			}
+		}
+		return sum;
 	}
 
 	
